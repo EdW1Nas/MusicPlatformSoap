@@ -1,0 +1,38 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://example.com/songs"
+        targetNamespace="http://example.com/songs" elementFormDefault="qualified">
+
+    <xs:element name="getSongRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="name" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getSongResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Song" type="tns:Song"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="Song">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="artist" type="xs:string"/>
+            <xs:element name="releaseYear" type="xs:int"/>
+            <xs:element name="genre" type="tns:Genre"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="Genre">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Pop"/>
+            <xs:enumeration value="Rock"/>
+            <xs:enumeration value="Metal"/>
+            <xs:enumeration value="Rap"/>
+            <xs:enumeration value="Country"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>
